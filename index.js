@@ -88,12 +88,16 @@ fill(gallons){
 }
 
 drive(distance){
-  this.odometer += distance;
-  (this.tank -= (distance/this.milesPerGallon));
-
-    if(this.tank = 0){
+   if(this.tank <= distance / this.milesPerGallon){
+     console.log(distance / this.milesPerGallon);
+     this.odometer += this.milesPerGallon * this.tank;
+     this.tank = 0;
     return `I ran out of fuel at ${this.odometer} miles!`;
   } 
+  this.odometer += distance;
+  this.tank -= distance/this.milesPerGallon;
+
+ 
 }
 }
 
@@ -143,6 +147,13 @@ constructor(options){
   this.favLanguage = options.favLanguage;
   this.catchPhrase = options.catchPhrase;
 }
+demo(subject){
+return `Today we are learning about ${subject}`;
+}
+
+grade(student, subject){
+  return `${student.name} recieves a perfect score on ${subject}`;
+}
 }
 
 /*
@@ -161,7 +172,21 @@ constructor(options){
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian{
-
+ constructor(options){
+   super(options);
+   this.previousBackground = options.previousBackground;
+   this.className = options.className;
+   this.favSubjects = options.favSubjects;
+ }
+ listSubjects(){
+ return `${this.favSubjects}`
+ }
+ PRAssignment(subject){
+ return `${this.name} has submitted a PR for ${subject}`;
+ }
+ sprintChallenge(subject){
+ return `${this.name} has begun a sprint challenge on ${subject}`;
+ }
 }
 
 /*
@@ -178,7 +203,17 @@ class Student extends Lambdasian{
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 class ProjectManager extends Instructor{
-
+constructor(options){
+  super(options);
+  this.gradClassName = options.gradClassName;
+  this.favInstructor = options.favInstructor;
+}
+standUp(channel){
+ return `${this.name} announces to ${channel}, @channel standy times!`
+}
+debugsCode(student, subject){
+  return `${this.name} debugs ${student.name}'s code on ${subject}`
+}
 }
 
 /*
