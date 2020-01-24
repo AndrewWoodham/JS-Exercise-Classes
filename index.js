@@ -92,7 +92,7 @@ drive(distance){
   (this.tank -= (distance/this.milesPerGallon));
 
     if(this.tank = 0){
-    return `I ran out of fuel at ${this.odometer} miles!`
+    return `I ran out of fuel at ${this.odometer} miles!`;
   } 
 }
 }
@@ -137,7 +137,12 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian{
-
+constructor(options){
+  super(options);
+  this.specialty = options.specialty;
+  this.favLanguage = options.favLanguage;
+  this.catchPhrase = options.catchPhrase;
+}
 }
 
 /*
